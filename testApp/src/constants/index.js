@@ -1,0 +1,3 @@
+export const FECHING_DATA = 'FECHING_LOGIN';
+export const FECHING_SUCCESS = 'FECHING_SUCCESS';
+export const FECHING_FAIL = 'FECHING_FAIL';

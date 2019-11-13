@@ -1,12 +1,13 @@
 import React from 'react';
 import {View} from 'react-native';
 import {Provider} from 'react-redux';
-import {createStore} from 'redux';
-import Reducers from './reducers';
 import SuperHeroesList from './component/superHeroesList';
+import configureStore from './configureStore';
+
+let store = configureStore();
 const Index = () => {
   return (
-    <Provider store={createStore(Reducers)}>
+    <Provider store={store}>
       <View>
         <SuperHeroesList />
       </View>
