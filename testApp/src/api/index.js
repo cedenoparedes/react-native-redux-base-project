@@ -1,6 +1,6 @@
 const URL = 'http://localhost:4000/api/auth';
 
-export default () => {
+export default loginApi = (username, password) => {
   return fetch(URL, {
     method: 'POST',
     headers: {
@@ -8,8 +8,8 @@ export default () => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      username: 'ecedeno',
-      password: '123456',
+      username,
+      password,
     }),
   })
     .then(response => response.json())

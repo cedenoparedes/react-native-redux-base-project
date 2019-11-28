@@ -1,16 +1,14 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Text, Button} from 'react-native';
 import {Provider} from 'react-redux';
-import SuperHeroesList from './component/superHeroesList';
+import Login from './component/login';
 import configureStore from './configureStore';
 
 let store = configureStore();
-const Index = () => {
+const Index = props => {
   return (
     <Provider store={store}>
-      <View>
-        <SuperHeroesList />
-      </View>
+      <Login />
     </Provider>
   );
 };

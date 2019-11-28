@@ -22,51 +22,21 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import Index from './src/index';
-const App: () => React$Node = () => {
-  return (
-    <View style={styles.sectionContainer}>
-      <Index />
-    </View>
-  );
-};
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
+import SuperHeroesList from './src/component/superHeroesList';
+import Login from './src/component/login';
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+const AppNavigator = createStackNavigator(
+  {
+    Home: {screen: Login},
+    SuperHeroesList: {screen: SuperHeroesList},
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  {
+    initialRouteName: 'Home',
   },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+);
+
+const App = createAppContainer(AppNavigator);
 
 export default App;
