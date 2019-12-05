@@ -7,25 +7,12 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import Index from './src/index';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import SuperHeroesList from './src/component/superHeroesList';
 import Login from './src/component/login';
+import {Provider} from 'react-redux';
+import configureStore from './src/configureStore';
 
 const AppNavigator = createStackNavigator(
   {
@@ -33,10 +20,26 @@ const AppNavigator = createStackNavigator(
     SuperHeroesList: {screen: SuperHeroesList},
   },
   {
+    defaultNavigationOptions: {
+      header: null,
+    },
+  },
+  {
     initialRouteName: 'Home',
   },
 );
 
-const App = createAppContainer(AppNavigator);
+const Navigation = createAppContainer(AppNavigator);
 
-export default App;
+const App = props => {
+  let store = configureStore();
+  return (
+    <Provider store={store}>
+      <Navigation />
+    </Provider>
+  );
+};
+
+export default () => {
+  return App();
+};

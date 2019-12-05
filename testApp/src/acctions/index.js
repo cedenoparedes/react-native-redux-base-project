@@ -1,9 +1,8 @@
 export {FECHING_DATA, FECHING_SUCCESS, FECHING_FAIL} from '../constants';
 
-
 export const selected_tab = tabId => {
   return {
-    type: 'selected_tab',
+    type: ' ',
     payload: tabId,
   };
 };
@@ -28,6 +27,4 @@ export const getDataFail = () => {
   };
 };
 
-export const fetchApi = () => {
-  
-};
+export const fetchApi = () => {};
