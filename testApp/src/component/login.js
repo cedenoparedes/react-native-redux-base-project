@@ -1,14 +1,19 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {Alert, Button, TextInput, View, StyleSheet} from 'react-native';
 import loginApi from '../api/index';
+import GlobalContext from '../context';
 
 const Login = props => {
+  const [globalContext, setGlobalContext, contextMiddleware] = useContext(
+    GlobalContext,
+  );
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
   const onLogin = async () => {
     await loginApi(username, password).then(res => {
       if (res.message === 'ok') {
+        setGlobalContext(res.token);
         props.navigation.navigate('SuperHeroesList');
       } else {
         Alert.alert('login', `${res.message}`);
